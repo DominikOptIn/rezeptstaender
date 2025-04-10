@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foto aufnehmen</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2em;
+        background: #f7f7f7;
+      }
+      label, input, button {
+        display: block;
+        width: 100%;
+        margin-bottom: 1em;
+        font-size: 1.2em;
+      }
+      button {
+        background-color: #0a5;
+        color: white;
+        padding: 0.5em;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Rezept einreichen</h2>
+    <form action="mailto:rezepte@kaechele24.de" method="POST" enctype="multipart/form-data">
+      <label for="phone">Telefonnummer:</label>
+      <input type="tel" id="phone" name="Telefonnummer" required />
+
+      <label for="photo">Foto vom Rezept:</label>
+      <input type="file" id="photo" name="Rezeptfoto" accept="image/*" capture="environment" required />
+
+      <button type="submit">Absenden</button>
+    </form>
+  </body>
+</html>
