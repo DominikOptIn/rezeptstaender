@@ -1,40 +1,68 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foto aufnehmen</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rezept einreichen</title>
     <style>
       body {
-        font-family: sans-serif;
-        padding: 2em;
-        background: #f7f7f7;
+        background-color: #f4f4f4;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        padding: 2rem;
+        margin: 0;
+        color: #222;
       }
-      label, input, button {
+      h1 {
+        font-size: 1.5rem;
+        color: #0a4c8a;
+        margin-bottom: 1rem;
+      }
+      label {
         display: block;
+        margin: 1rem 0 0.5rem;
+        font-weight: bold;
+      }
+      input, button {
         width: 100%;
-        margin-bottom: 1em;
-        font-size: 1.2em;
+        padding: 0.75rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
       }
       button {
-        background-color: #0a5;
+        background-color: #0a4c8a;
         color: white;
-        padding: 0.5em;
         border: none;
         cursor: pointer;
+      }
+      .info-text {
+        background-color: #e0f0ff;
+        border-left: 4px solid #0a4c8a;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
       }
     </style>
   </head>
   <body>
-    <h2>Rezept einreichen</h2>
-    <form action="mailto:rezepte@kaechele24.de" method="POST" enctype="multipart/form-data">
-      <label for="phone">Telefonnummer:</label>
-      <input type="tel" id="phone" name="Telefonnummer" required />
+    <h1>Rezept einreichen</h1>
+    <div class="info-text">
+      Bitte lege das Rezept auf die Markierung auf der Rückseite des Terminals.
+    </div>
+    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="access_key" value="59d47c14-facb-4359-884e-bc9e2ccf9617">
+      <input type="hidden" name="subject" value="Neues Rezept über das Rezeptterminal">
+      <input type="hidden" name="redirect" value="danke.html">
 
-      <label for="photo">Foto vom Rezept:</label>
-      <input type="file" id="photo" name="Rezeptfoto" accept="image/*" capture="environment" required />
+      <label for="telefon">Telefonnummer*</label>
+      <input type="tel" id="telefon" name="Telefonnummer" required>
 
-      <button type="submit">Absenden</button>
+      <label for="foto">Rezept fotografieren*</label>
+      <input type="file" id="foto" name="Rezeptfoto" accept="image/*" capture="environment" required>
+
+      <button type="submit">Rezept senden</button>
     </form>
   </body>
 </html>
