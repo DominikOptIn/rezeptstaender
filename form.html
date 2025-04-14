@@ -1,68 +1,74 @@
 
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Rezept einreichen</title>
-    <style>
-      body {
-        background-color: #f4f4f4;
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        padding: 2rem;
-        margin: 0;
-        color: #222;
-      }
-      h1 {
-        font-size: 1.5rem;
-        color: #0a4c8a;
-        margin-bottom: 1rem;
-      }
-      label {
-        display: block;
-        margin: 1rem 0 0.5rem;
-        font-weight: bold;
-      }
-      input, button {
-        width: 100%;
-        padding: 0.75rem;
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-      }
-      button {
-        background-color: #0a4c8a;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      .info-text {
-        background-color: #e0f0ff;
-        border-left: 4px solid #0a4c8a;
-        padding: 1rem;
-        margin-bottom: 2rem;
-        font-size: 1.1rem;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Rezept einreichen</h1>
-    <div class="info-text">
-      Bitte lege das Rezept auf die Markierung auf der Rückseite des Terminals.
-    </div>
-    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="access_key" value="59d47c14-facb-4359-884e-bc9e2ccf9617">
-      <input type="hidden" name="subject" value="Neues Rezept über das Rezeptterminal">
-      <input type="hidden" name="redirect" value="danke.html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rezept einreichen</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 2rem;
+      margin: 0;
+      color: #333;
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: #0a4c8a;
+    }
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #0a4c8a;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .info {
+      background-color: #e8f2ff;
+      border-left: 4px solid #0a4c8a;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+    .footer {
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rezept einreichen</h1>
+  <div class="info">
+    Bitte lege das Rezept auf die Markierung auf der Rückseite des Terminals.
+  </div>
+  <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <label for="telefon">Telefonnummer*</label>
+    <input type="tel" id="telefon" name="telefonnummer" required>
 
-      <label for="telefon">Telefonnummer*</label>
-      <input type="tel" id="telefon" name="Telefonnummer" required>
+    <label for="bemerkung">Bemerkung / Weitere Anmerkungen (optional)</label>
+    <textarea id="bemerkung" name="bemerkung" rows="3"></textarea>
 
-      <label for="foto">Rezept fotografieren*</label>
-      <input type="file" id="foto" name="Rezeptfoto" accept="image/*" capture="environment" required>
+    <label for="foto">Rezept fotografieren*</label>
+    <input type="file" id="foto" name="rezeptfoto" accept="image/*" capture="environment" required>
 
-      <button type="submit">Rezept senden</button>
-    </form>
-  </body>
+    <button type="submit">Rezept senden</button>
+  </form>
+  <div class="footer">
+    <a href="datenschutz.html">Datenschutzhinweis ansehen</a>
+  </div>
+</body>
 </html>
